@@ -1,0 +1,13 @@
+{% set title = 'Home' %}
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Notes</h1>
+<ul>
+{% for note in notes %}
+  <li>{{ note.title }} - {{ note.description }}</li>
+{% else %}
+  <li>This would display if the 'notes' collection were empty</li>
+{% endfor %}
+</ul>
+{% endblock %}

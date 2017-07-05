@@ -1,10 +1,10 @@
 var db = require('../../config/components/database');
 
-var postSchema = new db.Schema({
+var noteSchema = new db.Schema({
     title: String,
     description: String
 })
 
-var Post = db.model('Post', postSchema);
+var Note = db.model('Post', noteSchema);
 
-module.exports = Post;
+module.exports = Note;

@@ -1,0 +1,10 @@
+{% set title = 'Home' %}
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="/note/create" method="POST">
+    <input type="text" placeholder="name" name="title">
+    <textarea placeholder="description" name="description"></textarea>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

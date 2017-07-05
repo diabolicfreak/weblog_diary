@@ -1,5 +1,5 @@
-require('dotenv').config()
 var app = require('express')();
+require('./config')(app);
 require('./app/routes')(app);
 
 app.listen(process.env.PORT, function() {
