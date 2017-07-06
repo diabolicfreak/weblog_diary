@@ -1,10 +1,39 @@
-{% set title = 'Home' %}
+{% set title = 'Create note' %}
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="/note/create" method="POST">
-    <input type="text" placeholder="name" name="title">
-    <textarea placeholder="description" name="description"></textarea>
+<div class="panel panel-default">
+    <div class="panel-heading">Create new note <input data-provide="datepicker" id="datepicker" class="pull-right" value="{{ note.date|formatDate('MM/DD/YYYY') }}"></div>
+    <div class="panel-body">
+        <form class="form-horizontal" action="/note/{{action}}" method="POST">
+            <input type="hidden" id="hidden_date_field" name="date" value="{{ note.date|formatDate('MM/DD/YYYY') }}">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="title">Title:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="{{ note.title }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="description">Description:</label>
+                <div class="col-sm-10">
+                    <textarea placeholder="Description" id="description" name="description">{{ note.description }}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<!-- <form action="/note/create" method="POST">
+    <input type="text" placeholder="name" name="title" value="{{ note.title }}">
+    <textarea placeholder="description" name="description">{{ note.description }}</textarea>
+
     <button type="submit">Submit</button>
-</form>
+</form> -->
 {% endblock %}

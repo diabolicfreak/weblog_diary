@@ -1,12 +1,21 @@
 var nunjucks = require('nunjucks');
+var bodyParser = require('body-parser');
 
 require('dotenv').config();
 
- module.exports = function(app){
-     var PATH_TO_TEMPLATES = 'app/layout/view' ;
-     console.log('PATH_TO_TEMPLATESasda '+PATH_TO_TEMPLATES);
-     nunjucks.configure( PATH_TO_TEMPLATES, {
-         autoescape: true,
-         express: app
-     } ) ;
- }
+module.exports = function(app, express){
+    app.use(express.static(__dirname + '/../app/layout'));
+    app.use(bodyParser.urlencoded({extended: true}))
+    // app.set('view engine', 'ejs');
+
+    /**
+     * Setup nunjucks
+     */
+    var PATH_TO_TEMPLATES = 'app/layout/view';
+    var env = nunjucks.configure( PATH_TO_TEMPLATES, {
+        autoescape: true,
+        express: app
+    });
+    // Add filters
+    require(__dirname + '/../app/filter/datefilter')(env);
+}

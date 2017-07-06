@@ -2,10 +2,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Notes</h1>
+<h1>Notes</h1>{{notes}}
 <ul>
 {% for note in notes %}
-  <li>{{ note.title }} - {{ note.description }}</li>
+  <li>{{ note.title }} - {{ note.description }} - {{ note.date }}</li> <a href="/note/{{note._id}}">{{ note.title }}</a> <a href="/note/{{note._id}}/edit">Edittt</a>
 {% else %}
   <li>This would display if the 'notes' collection were empty</li>
 {% endfor %}

@@ -1,5 +1,7 @@
-var app = require('express')();
-require('./config')(app);
+var express = require('express');
+var app = express();
+
+require('./config')(app, express);
 require('./app/routes')(app);
 
 app.listen(process.env.PORT, function() {
