@@ -3,11 +3,7 @@ var Note = require('./controller/note');
 module.exports = function(app){
 
     app.get('/', function(req, res){
-        var data = {
-            title: 'Andsssaay',
-            description: 'Neale Neale Neale NealeNeale Neale'
-        } ;
-        res.render('home.html', {data: data});
+        res.render('home.html');
     });
 
     app.get('/note', Note.index);
@@ -20,5 +16,5 @@ module.exports = function(app){
     app.get('/note/:id/edit', Note.edit);
     app.post('/note/:id/edit', Note.update);
 
-    app.delete('/note/:id', Note.delete);
+    app.get('/note/:id/delete', Note.delete);
 }

@@ -6,7 +6,6 @@ require('dotenv').config();
 module.exports = function(app, express){
     app.use(express.static(__dirname + '/../app/layout'));
     app.use(bodyParser.urlencoded({extended: true}))
-    // app.set('view engine', 'ejs');
 
     /**
      * Setup nunjucks
